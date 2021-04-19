@@ -1,0 +1,56 @@
+<div class="alignment">
+    <div class="registration-form">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+            <div class="form-icon">
+                <span><i class="fa fa-user"></i></span>
+
+            </div>
+            <div class="form-heading">
+                <h1>Login</h1>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" formControlName="email" maxlength="30" placeholder="Email">
+                <span class="text-danger"
+                    *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched">Invalid Email
+                    Address.</span>
+            </div>
+            
+            <div class="form-group">
+                <input type="password" class="form-control item" formControlName="password" maxlength="30"
+                    placeholder="Password" autocomplete="on">
+                     
+                <div id="passwordHelp"><a routerLink="/forgotPassword"> Forgot Password?</a></div>
+                <span class="text-danger"
+                    *ngIf="loginForm.controls.password.errors && loginForm.controls.password.touched">Invalid
+                    Password.</span>
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="error">
+                <center>
+                    <strong>{{error}}</strong>
+
+                </center>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-block create-account">Login</button>
+            </div>
+            <h5 class="sepration">OR</h5>
+
+            <!-- Google Button -->
+
+            <div class="row">
+                <div class="col-md-12"> <a class="btn btn-lg btn-google btn-block  btn-outline"
+                        (click)="signInWithGoogle()"><img src="https://img.icons8.com/color/16/000000/google-logo.png">
+                        <span class="google-text">Signup Using Google </span></a> </div>
+            </div>
+            <!--End Google Button-->
+            <h5 class="sepration">Not Registered Yet?</h5>
+            <div class="form-group">
+                <button type="button" class="btn btn-block create-account" style="background-color:#333333" routerLink="/register">Create
+                    Account</button>
+            </div>
+        </form>
+
+    </div>
+</div>

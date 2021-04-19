@@ -1,0 +1,54 @@
+<div class="registration-form">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+        <div class="form-icon">
+            <span><i class="fa fa-user"></i></span>
+        </div>
+        <div class="form-heading">
+            <h1>Registration</h1>
+        </div>
+        <div class="form-group">
+            <input type="text" formControlName="username" maxlength="30" class="form-control item"
+                placeholder="Username">
+            <span class="text-danger"
+                *ngIf="registerForm.controls.username.errors && registerForm.controls.username.touched">Invalid
+                Username.</span>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control item" maxlength="30" formControlName="email" placeholder="Email">
+            <span class="text-danger"
+                *ngIf="registerForm.controls.email.errors && registerForm.controls.email.touched">Invalid Email
+                Address.</span>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item" maxlength="30" formControlName="password"
+                placeholder="Password">
+            <span class="text-danger"
+                *ngIf="registerForm.controls.password.errors && registerForm.controls.password.touched">Invalid
+                Password.</span>
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control item" maxlength="30" formControlName="confirmPassword"
+                placeholder="Confirm Password">
+            <span class="text-danger"
+                *ngIf="registerForm.controls.confirmPassword.errors && registerForm.controls.confirmPassword.touched">Password
+                Not Matched.</span>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+            <center>
+                <strong>{{error}}</strong>
+
+            </center>
+        </div>
+        <div class="form-group">
+            <button type="submit" [disabled]="registerForm.invalid" class="btn btn-block create-account">Create
+                Account</button>
+        </div>
+        <h5 class="sepration">Already Have Account?</h5>
+        <div class="form-group">
+            <button type="button" class="btn btn-block create-account" style="background-color:#333333" routerLink="/login">Login</button>
+        </div>
+    </form>
+
+</div>
